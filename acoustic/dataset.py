@@ -8,9 +8,9 @@ from torch.utils.data import Dataset
 
 
 class MelDataset(Dataset):
-    def __init__(self, root: Path, num_units: int, train: bool = True):
-        self.mels_dir = root / "mels"
-        self.units_dir = root / "units"
+    def __init__(self, root: Path, num_units: int, train: bool = True, mel_folder_name: str = "mels", unit_folder_name: str = "units"):
+        self.mels_dir = root / mel_folder_name
+        self.units_dir = root / unit_folder_name
 
         assert self.mels_dir.exists(), f"{self.mels_dir} does not exist"
         assert self.units_dir.exists(), f"{self.units_dir} does not exist"

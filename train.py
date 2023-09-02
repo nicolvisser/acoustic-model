@@ -1,5 +1,3 @@
-from pathlib import Path
-
 import click
 import lightning.pytorch as pl
 from lightning.pytorch import loggers as pl_loggers
@@ -9,19 +7,32 @@ from torch.utils.data import DataLoader
 from acoustic.dataset import MelDataset
 from acoustic.module import LitAcousticModel
 
-NUM_UNITS = 100
 BATCH_SIZE = 32
 
-dataset_dir = Path(
-    click.prompt(
-        "Path to the directory containing the prepared data",
-        type=click.Path(exists=True, dir_okay=True, file_okay=False),
-    )
+dataset_dir = click.prompt(
+    "Path to the directory containing the prepared data",
+    type=click.Path(exists=True, dir_okay=True, file_okay=False),
 )
 
-train_dataset = MelDataset(root=dataset_dir, num_units=NUM_UNITS, train=True)
+unit_folder_name = click.prompt("Name of the subfolder containing the units", type=str)
 
-val_dataset = MelDataset(root=dataset_dir, num_units=NUM_UNITS, train=False)
+version_name = click.prompt("Version name", type=str)
+
+NUM_UNITS = click.prompt("Number of units", type=int)
+
+train_dataset = MelDataset(
+    root=dataset_dir,
+    num_units=NUM_UNITS,
+    train=True,
+    unit_folder_name=unit_folder_name,
+)
+
+val_dataset = MelDataset(
+    root=dataset_dir,
+    num_units=NUM_UNITS,
+    train=False,
+    unit_folder_name=unit_folder_name,
+)
 
 train_dataloader = DataLoader(
     dataset=train_dataset,
@@ -42,9 +53,9 @@ val_dataloader = DataLoader(
     drop_last=False,
 )
 
-duration_predictor = LitAcousticModel(num_units=100, upsample=True)
+duration_predictor = LitAcousticModel(num_units=NUM_UNITS, upsample=True)
 
-tensorboard = pl_loggers.TensorBoardLogger(save_dir="")
+tensorboard = pl_loggers.TensorBoardLogger(save_dir="", version=version_name)
 
 checkpoint_callback = ModelCheckpoint(save_top_k=3, save_last=True, monitor="val_loss")
 
