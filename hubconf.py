@@ -3,27 +3,27 @@ dependencies = ["torch"]
 URLS = {
     "ljspeech": {
         50: {
-            0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/ljspeech-kmeans-50.ckpt"
+            0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/ljspeech-kmeans-50-ce7b91ce.ckpt"
         },
         100: {
-            0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/ljspeech-kmeans-100.ckpt"
+            0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/ljspeech-kmeans-100-ac6ec4d5.ckpt"
         },
         200: {
-            0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/ljspeech-kmeans-200.ckpt"
+            0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/ljspeech-kmeans-200-fb45eba7.ckpt"
         },
         500: {
-            0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/ljspeech-kmeans-500.ckpt",
-            4: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/ljspeech-kmeans-500-dp-lambda-4.ckpt",
-            8: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/ljspeech-kmeans-500-dp-lambda-8.ckpt",
-            12: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/ljspeech-kmeans-500-dp-lambda-12.ckpt",
-            16: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/ljspeech-kmeans-500-dp-lambda-16.ckpt",
+            0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/ljspeech-kmeans-500-239bee21.ckpt",
+            4: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/ljspeech-kmeans-500-dp-lambda-4-5850c2ff.ckpt",
+            8: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/ljspeech-kmeans-500-dp-lambda-8-35589d7d.ckpt",
+            12: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/ljspeech-kmeans-500-dp-lambda-12-82f7a0e8.ckpt",
+            16: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/ljspeech-kmeans-500-dp-lambda-16-69a7ce5e.ckpt",
         },
         1000: {
-            0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/ljspeech-kmeans-1000.ckpt",
-            4: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/ljspeech-kmeans-1000-dp-lambda-4.ckpt",
+            0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/ljspeech-kmeans-1000-6d5f80f7.ckpt",
+            4: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/ljspeech-kmeans-1000-dp-lambda-4-4ab70eb5.ckpt",
         },
         2000: {
-            0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/ljspeech-kmeans-2000.ckpt"
+            0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/ljspeech-kmeans-2000-586b792b.ckpt"
         },
     },
 }
@@ -57,7 +57,9 @@ def acoustic(
 
     if pretrained:
         checkpoint = torch.hub.load_state_dict_from_url(
-            URLS[dataset][n_clusters][lmbda], progress=progress
+            URLS[dataset][n_clusters][lmbda],
+            progress=progress,
+            check_hash=True,
         )
         model = _load_model_from_checkpoint(checkpoint)
         model.eval()
