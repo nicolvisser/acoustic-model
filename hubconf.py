@@ -33,7 +33,6 @@ URLS = {
 import torch
 
 from acoustic import AcousticModel
-from load_from_checkpoint import _load_model_from_checkpoint
 
 
 def acoustic(
@@ -67,7 +66,7 @@ def acoustic(
             progress=progress,
             check_hash=True,
         )
-        model = _load_model_from_checkpoint(checkpoint)
+        model = AcousticModel.load_model_from_lit_checkpoint(checkpoint)
         model.eval()
     else:
         model = AcousticModel(num_units=n_units, upsample=True)
