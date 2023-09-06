@@ -7,10 +7,15 @@ URLS = {
                 0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-50-ce7b91ce.ckpt"
             },
             100: {
-                0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-100-ac6ec4d5.ckpt"
+                0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-100-ac6ec4d5.ckpt",
+                4: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-100-dp-lambda-4-3d941b35",
+                8: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-100-dp-lambda-8-23c13dad",
             },
             200: {
-                0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-200-fb45eba7.ckpt"
+                0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-200-fb45eba7.ckpt",
+                4: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-200-dp-lambda-4-6cb986be",
+                8: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-200-dp-lambda-8-ae57f8fa",
+                12: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-200-dp-lambda-12-ed196e3d",
             },
             500: {
                 0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-500-239bee21.ckpt",
@@ -48,9 +53,7 @@ def acoustic(
     allowed_features = URLS.keys()
     assert features in allowed_features, f"features must be one of {allowed_features}"
     allowed_datasets = URLS[features].keys()
-    assert (
-        dataset in allowed_datasets
-    ), f"dataset must be one of {allowed_datasets}, if you choose {features}"
+    assert dataset in allowed_datasets, f"dataset must be one of {allowed_datasets}, if you choose {features}"
     allowed_n_clusters = URLS[features][dataset].keys()
     assert (
         n_units in allowed_n_clusters
