@@ -11,6 +11,7 @@ from acoustic.module import LitAcousticModel
 
 BATCH_SIZE = 32
 
+
 @click.command()
 @click.option(
     "--mels_dir",
@@ -37,12 +38,7 @@ BATCH_SIZE = 32
     prompt=True,
 )
 def train(mels_dir: str, units_dir: str, num_units: int, version_name: str):
-    train_dataset = MelDataset(
-        mels_dir=mels_dir,
-        units_dir=units_dir,
-        num_units=num_units,
-        train=True
-    )
+    train_dataset = MelDataset(mels_dir=mels_dir, units_dir=units_dir, num_units=num_units, train=True)
 
     val_dataset = MelDataset(
         mels_dir=mels_dir,
@@ -55,7 +51,7 @@ def train(mels_dir: str, units_dir: str, num_units: int, version_name: str):
         dataset=train_dataset,
         batch_size=BATCH_SIZE,
         shuffle=True,
-        num_workers=8,
+        num_workers=4,
         collate_fn=train_dataset.pad_collate,
         pin_memory=True,
         drop_last=True,
@@ -65,7 +61,7 @@ def train(mels_dir: str, units_dir: str, num_units: int, version_name: str):
         dataset=val_dataset,
         batch_size=1,
         shuffle=False,
-        num_workers=8,
+        num_workers=4,
         pin_memory=True,
         drop_last=False,
     )
@@ -74,12 +70,17 @@ def train(mels_dir: str, units_dir: str, num_units: int, version_name: str):
 
     tensorboard = pl_loggers.TensorBoardLogger(save_dir="", version=version_name)
 
+    if Path(tensorboard.log_dir).exists():
+        raise ValueError(
+            f"A log with version name, {version_name}, already exists in {tensorboard.log_dir}. Please choose another version name or delete the existing version."
+        )
+
     checkpoint_callback = ModelCheckpoint(save_top_k=3, save_last=True, monitor="val_loss")
 
     trainer = pl.Trainer(
         accelerator="gpu",
         logger=tensorboard,
-        max_epochs=-1,
+        max_epochs=65,
         log_every_n_steps=10,
         callbacks=[checkpoint_callback],
     )
@@ -89,6 +90,7 @@ def train(mels_dir: str, units_dir: str, num_units: int, version_name: str):
         train_dataloaders=train_dataloader,
         val_dataloaders=val_dataloader,
     )
+
 
 if __name__ == "__main__":
     train()
