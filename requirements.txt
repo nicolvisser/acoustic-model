@@ -2,6 +2,7 @@ torch
 torchaudio
 torchvision
 lightning
+tensorboard
 tensorboardX
 click
 tqdm
