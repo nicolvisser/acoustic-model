@@ -10,6 +10,9 @@ URLS = {
                 0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-100-ac6ec4d5.ckpt",
                 4: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-100-dp-lambda-4-0041575b.ckpt",
                 8: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-100-dp-lambda-8-bdb4d455.ckpt",
+                12: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-100-dp-lambda-12-487cf2d7.ckpt",
+                16: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-100-dp-lambda-16-1db07a1f.ckpt",
+                20: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-100-dp-lambda-20-cd0ef321.ckpt",
             },
             200: {
                 0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-200-fb45eba7.ckpt",
@@ -17,6 +20,7 @@ URLS = {
                 8: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-200-dp-lambda-8-2fbdd6da.ckpt",
                 12: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-200-dp-lambda-12-aeaaaa34.ckpt",
                 16: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-200-dp-lambda-16-81d50a02.ckpt",
+                20: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-200-dp-lambda-20-b5d019d4.ckpt",
             },
             500: {
                 0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-500-239bee21.ckpt",
@@ -31,6 +35,8 @@ URLS = {
                 0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-1000-6d5f80f7.ckpt",
                 4: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-1000-dp-lambda-4-4ab70eb5.ckpt",
                 8: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-1000-dp-lambda-8-80d17ebb.ckpt",
+                12: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-1000-dp-lambda-12-98958967.ckpt",
+                16: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-1000-dp-lambda-16-e44c90b1.ckpt",
             },
             2000: {
                 0: "https://github.com/nicolvisser/acoustic-model/releases/download/v0.1/acoustic-hubert-bshall-ljspeech-kmeans-2000-586b792b.ckpt",
